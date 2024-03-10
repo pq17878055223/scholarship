@@ -1,0 +1,95 @@
+
+    <form style="margin: 0 auto;" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <div nz-row>
+        <div nz-col nzSpan="18">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="userId" nzRequired>
+              <span>员工工号</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入员工工号!">
+              <input nz-input id="userId" formControlName="userId" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>员工姓名</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入员工姓名!">
+              <input nz-input id="name" formControlName="name" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>性别</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择性别!">
+              <nz-select id="sex" formControlName="sex">
+                <nz-option nzValue="男" nzLabel="男"></nz-option>
+                <nz-option nzValue="女" nzLabel="女"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
+              <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>确认密码</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+              <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  请输入确认密码!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  你输入的两个密码不一致!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>手机号码</nz-form-label>
+            <nz-form-control
+              [nzSm]="14"
+              [nzXs]="24"
+              [nzValidateStatus]="validateForm.controls['phoneNumber']"
+              nzErrorTip="请输入手机号码!"
+            >
+              <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="position" nzRequired>
+              <span>职位</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入职位!">
+              <input nz-input id="position" formControlName="position" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="6">
+          <nz-upload
+            class="avatar-uploader"
+            nzAction="http://127.0.0.1:5000/file/upload"
+            nzName="avatar"
+            nzListType="picture-card"
+            [nzShowUploadList]="false"
+            [nzBeforeUpload]="beforeUpload"
+            (nzChange)="handleChange($event)"
+          >
+            <ng-container *ngIf="!avatarUrl">
+              <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+              <div class="ant-upload-text">上传员工照片</div>
+            </ng-container>
+            <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+          </nz-upload>  
+        </div>
+      </div>
+    </form>   
+    <div class="ant-modal-footer" style="margin: 0 -24px;">
+      <button nz-button (click)="close()">取消</button>
+      <button nz-button nzType="primary" (click)="submitForm()">确定</button>
+    </div>
+  

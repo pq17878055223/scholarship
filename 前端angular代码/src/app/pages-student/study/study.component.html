@@ -1,0 +1,55 @@
+<nz-spin [nzSpinning]="isSpinning">
+  <div>
+    <nz-steps [nzCurrent]="current" [nzStatus]="status">
+      <nz-step nzTitle="提交材料"></nz-step>
+      <nz-step nzTitle="待审核"></nz-step>
+      <nz-step [nzTitle]="result"></nz-step>
+    </nz-steps>
+    <div style="padding-top: 48px;">
+      <form nz-form [formGroup]="validateForm" style="width: 500px; margin: auto;">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>材料附件</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请上传申请文件！">
+            <nz-upload *ngIf="current === 0" [nzDisabled]="fileId!==''" nzShowUploadList="icons" nzLimit="1"
+                       [nzAction]="uploadUrl" nzName="avatar" (nzChange)="handleChange($event)">
+              <button nz-button>
+                <i nz-icon nzType="upload"></i>
+                上传
+              </button>
+            </nz-upload>
+            <a *ngIf="current !== 0">{{ fileName }}</a>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="study">科研成果得分</nz-form-label>
+          <nz-form-control [nzSm]="30" [nzXs]="24" nzErrorTip="请输入成绩！">
+                        <textarea *ngIf="current === 0" nz-input formControlName="study" id="study"
+                                  [nzAutosize]="{ minRows: 1, maxRows: 8 }"></textarea>
+            <span *ngIf="current !== 0">{{ study }}</span>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="competition">科创竞赛得分</nz-form-label>
+          <nz-form-control [nzSm]="30" [nzXs]="24" nzErrorTip="请输入成绩！">
+                        <textarea *ngIf="current === 0" nz-input formControlName="competition" id="competition"
+                                  [nzAutosize]="{ minRows: 1, maxRows: 8 }"></textarea>
+            <span *ngIf="current !== 0">{{ competition }}</span>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="society">社会活动得分</nz-form-label>
+          <nz-form-control [nzSm]="30" [nzXs]="24" nzErrorTip="请输入成绩！">
+                        <textarea *ngIf="current === 0" nz-input formControlName="society" id="society"
+                                  [nzAutosize]="{ minRows: 1, maxRows: 8 }"></textarea>
+            <span *ngIf="current !== 0">{{ society }}</span>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom: 8px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button *ngIf="current === 0" nzGhost nzType="primary" nz-button (click)="submitForm()">提交</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-spin>

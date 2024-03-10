@@ -1,0 +1,56 @@
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="orderId">订单编号</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入订单编号!">
+          <input nz-input formControlName="orderId" id="orderId" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="productId">保险产品编号</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入保险产品编号!">
+          <input nz-input formControlName="productId" id="productId" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salesPersonId">业务人员编号</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入业务人员编号!">
+          <input nz-input formControlName="salesPersonId" id="salesPersonId" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="customer">客户</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入客户!">
+          <input nz-input formControlName="customer" id="customer" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>客户地址</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入客户地址!">
+          <input nz-input id="address" formControlName="address" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="contact" nzRequired>客户联系方式</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入客户联系方式!">
+          <input nz-input id="contact" formControlName="contact" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="date" nzRequired>销售日期</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择销售日期!">
+          <nz-date-picker id="date" formControlName="date"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="salesAmount" nzRequired>销售金额（元）</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入销售金额（元）!">
+          <nz-input-number id="salesAmount" formControlName="salesAmount" [nzMin]="1" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <div class="ant-modal-footer" style="margin: 0 -24px;">
+      <button nz-button (click)="close()">取消</button>
+      <button nz-button nzType="primary" (click)="submitForm()">确定</button>
+    </div>
+  

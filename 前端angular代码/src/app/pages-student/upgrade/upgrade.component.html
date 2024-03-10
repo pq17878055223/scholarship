@@ -1,0 +1,32 @@
+<nz-spin [nzSpinning]="isSpinning">
+  <div>
+    <nz-steps [nzCurrent]="current" [nzStatus]="status">
+      <nz-step nzTitle="提交材料"></nz-step>
+      <nz-step nzTitle="待审核"></nz-step>
+      <nz-step [nzTitle]="result"></nz-step>
+    </nz-steps>
+    <div style="padding-top: 48px;">
+      <form nz-form [formGroup]="validateForm" style="width: 500px; margin: auto;">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>材料附件</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请上传申请文件！">
+            <nz-upload *ngIf="current === 0" [nzDisabled]="fileId!==''" nzShowUploadList="icons" nzLimit="1"
+                       [nzAction]="uploadUrl" nzName="avatar" (nzChange)="handleChange($event)">
+              <button nz-button>
+                <span nz-icon nzType="upload"></span>
+                上传
+              </button>
+            </nz-upload>
+            <a *ngIf="current !== 0">{{ fileName }}</a>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom: 8px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button *ngIf="current === 0" nzGhost nz-button nzType="primary" (click)="submitForm()">提交</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-spin>
+

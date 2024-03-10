@@ -1,0 +1,77 @@
+<!--
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salesPersonId">业务员工号</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入业务员工号!">
+      <input nz-input formControlName="salesPersonId" id="salesPersonId" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">姓名</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入姓名!">
+      <input nz-input formControlName="name" id="name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="sex">性别</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择性别!">
+      <nz-select  formControlName="sex" id="sex">
+        <nz-option nzValue="男" nzLabel="男"></nz-option>
+        <nz-option nzValue="女" nzLabel="女"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="area" nzRequired>所属战区</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入所属战区!">
+      <input nz-input id="area" formControlName="area" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>联系电话</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入联系电话!">
+      <input nz-input id="phoneNumber" formControlName="phoneNumber" />
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<div class="ant-modal-footer" style="margin: 0 -24px;">
+  <button nz-button (click)="close()">取消</button>
+  <button nz-button nzType="primary" (click)="submitForm()">确定</button>
+</div>
+-->
+<form nz-form [formGroup]="validateForm" style="width: 600px">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="theme">公告主题</nz-form-label>
+    <nz-form-control [nzSm]="30" [nzXs]="24" nzErrorTip="请输入公告主题！">
+                        <textarea nz-input formControlName="theme" id="theme"
+                                  [nzAutosize]="{ minRows: 1, maxRows: 8 }"></textarea>
+      <span>{{ description }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="description">公告内容</nz-form-label>
+    <nz-form-control [nzSm]="30" [nzXs]="24" nzErrorTip="请输入内容！">
+                        <textarea nz-input formControlName="description" id="description"
+                                  [nzAutosize]="{ minRows: 8, maxRows: 50 }"></textarea>
+      <span>{{ theme }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>附件上传</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请上传附件！">
+      <nz-upload [nzDisabled]="fileId!==''" nzShowUploadList="icons" nzLimit="1"
+                 [nzAction]="uploadUrl" nzName="avatar" (nzChange)="handleChange($event)">
+        <button nz-button>
+          <i nz-icon nzType="upload"></i>
+          上传
+        </button>
+      </nz-upload>
+      <a>{{ fileName }}</a>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row style="margin-bottom: 8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nzGhost nz-button nzType="primary" (click)="submitForm()">提交</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

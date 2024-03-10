@@ -1,0 +1,42 @@
+<form style="margin-bottom: 8px;" nz-form [nzLayout]="'inline'" [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-upload [(nzFileList)]="fileList" [nzLimit]='1' [nzMultiple]="true" [nzBeforeUpload]="beforeUpload">
+      <button nz-button>
+        <i nz-icon nzType="upload"></i>
+        <span>上传用户信息</span>
+      </button>
+    </nz-upload>
+  </nz-form-item>
+</form>
+<nz-table #basicTable [nzData]="ListOfData" [nzShowPagination]="true"
+          [nzPageSize]="4"
+          [nzScroll]="{y:'350px'}">
+  <thead>
+  <tr>
+    <th>学工号</th>
+    <th>姓名</th>
+    <th>密码</th>
+    <th>角色</th>
+    <th>班级</th>
+    <th>专业</th>
+    <th>硕士类别</th>
+    <th>奖学金等级</th>
+    <th nzWidth="60px">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.userId }}</td>
+    <td>{{ data.name }}</td>
+    <td>{{ data.password }}</td>
+    <td>{{ data.role }}</td>
+    <td>{{ data.class_name }}</td>
+    <td>{{ data.major }}</td>
+    <td>{{ data.master }}</td>
+    <td>{{ data.scholarship }}</td>
+    <td>
+      <a (click)="deleteUser(data.userId)">删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

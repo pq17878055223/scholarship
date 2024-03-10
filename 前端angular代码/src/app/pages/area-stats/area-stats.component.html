@@ -1,0 +1,22 @@
+<nz-table #basicTable [nzData]="listOfData" [nzPageSize]="5">
+  <thead>
+  <tr>
+    <th>学号</th>
+    <th>材料附件</th>
+    <th>审核状态</th>
+    <th>审核</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.userId }}</td>
+    <td><a [href]="data.href">{{ data.fileName }}</a></td>
+    <td>{{ data.status === 1 ? '待审核' : data.status === 3 ? '审核不通过' : '审核通过' }}</td>
+    <td>
+      <a (click)="changeUpgradeStatus(data, 2)" *ngIf="data.status === 1">通过</a>
+      |
+      <a (click)="changeUpgradeStatus(data, 3)" *ngIf="data.status === 1">不通过</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

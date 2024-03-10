@@ -1,0 +1,29 @@
+<form style="margin-bottom: 8px;" nz-form [nzLayout]="'inline'" [formGroup]="validateForm">
+    <nz-form-control>
+      <button nz-button nzType="default" (click)="add()">新增公告</button>
+    </nz-form-control>
+</form>
+<nz-table #basicTable [nzData]="listOfData" [nzLoading]="isLoading"
+          [nzScroll]="{y:'350px'}">
+  <thead>
+  <tr>
+    <th>公告主题</th>
+    <th>公告内容</th>
+    <th>附件链接</th>
+    <th>发布时间</th>
+    <th nzWidth="60px">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.theme }}</td>
+    <td>{{ data.description }}</td>
+    <td><a [href]="data.href">{{ data.fileName }}</a></td>
+    <td>{{ data.add_times*1000 | date:"YYYY-MM-dd"}}</td>
+    <td>
+      <a (click)="deleteInform(data.informId)">删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+

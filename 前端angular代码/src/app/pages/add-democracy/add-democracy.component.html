@@ -1,0 +1,46 @@
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="student_number">学号</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入学号!">
+      <input nz-input formControlName="student_number" id="student_number" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="student_name">姓名</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入姓名!">
+      <input nz-input formControlName="student_name" id="student_name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="class_name">班级</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择班级!">
+      <nz-select  formControlName="class_name" id="class_name">
+        <nz-option nzValue="经管硕2201班" nzLabel="经管硕2201班"></nz-option>
+        <nz-option nzValue="经管硕2202班" nzLabel="经管硕2202班"></nz-option>
+        <nz-option nzValue="经管硕2203班" nzLabel="经管硕2203班"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="major" nzRequired>专业</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择专业!">
+      <nz-select id="major" formControlName="major">
+        <nz-option nzValue="管理科学与工程" nzLabel="管理科学与工程"></nz-option>
+        <nz-option nzValue="系统工程" nzLabel="系统工程"></nz-option>
+        <nz-option nzValue="工商管理" nzLabel="工商管理"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="democracy" nzRequired>民主评议成绩</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入成绩！">
+      <input nz-input id="democracy" formControlName="democracy" />
+    </nz-form-control>
+  </nz-form-item>
+</form>
+<div class="ant-modal-footer" style="margin: 0 -24px;">
+  <button nz-button (click)="close()">取消</button>
+  <button nz-button nzType="primary" (click)="submitForm()">确定</button>
+</div>
+

@@ -1,0 +1,104 @@
+
+    <form style="margin: 0 auto;" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <div nz-row>
+        <div nz-col nzSpan="20">
+          <!-- <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">员工照片</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+
+            </nz-form-control>
+          </nz-form-item> -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="userId" nzRequired>
+              <span>学工号</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入学工号!">
+              <input nz-input id="userId" formControlName="userId" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>姓名</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入姓名!">
+              <input nz-input id="name" formControlName="name" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
+              <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>确认密码</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+              <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  请输入确认密码!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  你输入的两个密码不一致!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>角色</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择您的角色!">
+              <nz-select id="role" formControlName="role">
+                <nz-option nzValue="学生" nzLabel="学生"></nz-option>
+                <nz-option nzValue="管理员" nzLabel="管理员"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>班级</span>
+            </nz-form-label>
+              <nz-select id="class_name" formControlName="class_name">
+                <nz-option nzValue="经管硕2201班" nzLabel="经管硕2201班"></nz-option>
+                <nz-option nzValue="经管硕2202班" nzLabel="经管硕2202班"></nz-option>
+                <nz-option nzValue="经管硕2203班" nzLabel="经管硕2203班"></nz-option>
+              </nz-select>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>专业</span>
+            </nz-form-label>
+              <nz-select id="major" formControlName="major">
+                <nz-option nzValue="管理科学与工程" nzLabel="管理科学与工程"></nz-option>
+                <nz-option nzValue="系统工程" nzLabel="系统工程"></nz-option>
+                <nz-option nzValue="工商管理" nzLabel="工商管理"></nz-option>
+              </nz-select>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>硕士类别</span>
+            </nz-form-label>
+              <nz-select id="master" formControlName="master">
+                <nz-option nzValue="学硕" nzLabel="学硕"></nz-option>
+                <nz-option nzValue="专硕" nzLabel="专硕"></nz-option>
+              </nz-select>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+              <span>研一奖学金等级</span>
+            </nz-form-label>
+            <nz-select id="scholarship" formControlName="scholarship">
+              <nz-option nzValue="一等奖学金" nzLabel="一等奖学金"></nz-option>
+              <nz-option nzValue="二等奖学金" nzLabel="二等奖学金"></nz-option>
+              <nz-option nzValue="三等奖学金" nzLabel="三等奖学金"></nz-option>
+            </nz-select>
+          </nz-form-item>
+          <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button nz-button nzType="primary" type="submit">注册</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>

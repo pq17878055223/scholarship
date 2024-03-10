@@ -1,0 +1,14 @@
+<nz-list nzItemLayout="horizontal">
+  <nz-list-item *ngFor="let item of listOfData">
+    <nz-list-item-meta>
+      <nz-list-item-meta-title (click)="check(item)">
+        {{ item.theme }}
+      </nz-list-item-meta-title>
+    </nz-list-item-meta>
+    <ul nz-list-item-actions>
+      <nz-list-item-action><a>{{ item.add_times*1000 | date:"YYYY-MM-dd"}}</a></nz-list-item-action>
+    </ul>
+  </nz-list-item>
+  <nz-list-empty></nz-list-empty>
+</nz-list>
+

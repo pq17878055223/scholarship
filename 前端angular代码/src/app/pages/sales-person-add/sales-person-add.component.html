@@ -1,0 +1,49 @@
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="course">课程名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入课程名称!">
+          <input nz-input formControlName="course" id="course" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="teacher">任课老师</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入任课老师!">
+          <input nz-input formControlName="teacher" id="teacher" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="credit">学分</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择学分!">
+          <nz-select  formControlName="credit" id="credit">
+            <nz-option nzValue="1" nzLabel="1"></nz-option>
+            <nz-option nzValue="2" nzLabel="2"></nz-option>
+            <nz-option nzValue="3" nzLabel="3"></nz-option>
+            <nz-option nzValue="4" nzLabel="4"></nz-option>
+            <nz-option nzValue="5" nzLabel="5"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="student_number" nzRequired>学号</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入学号!">
+          <input nz-input id="student_number" formControlName="student_number" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="student_name" nzRequired>姓名</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入姓名！">
+          <input nz-input id="student_name" formControlName="student_name" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="score" nzRequired>成绩</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入成绩！">
+          <input nz-input id="score" formControlName="score" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <div class="ant-modal-footer" style="margin: 0 -24px;">
+      <button nz-button (click)="close()">取消</button>
+      <button nz-button nzType="primary" (click)="submitForm()">确定</button>
+    </div>

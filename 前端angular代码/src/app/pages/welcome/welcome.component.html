@@ -1,0 +1,164 @@
+<!--
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a target="_blank">
+          <img src="../../assets/logo.svg" alt="logo">
+          <h1>奖学金评定管理系统</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="inform-manager">公告管理</a>
+        </li>
+        <li nz-submenu nzOpen nzTitle="课程成绩" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="user-info">成绩录入</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="sales-person">成绩统计</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="科研活动" nzIcon="form">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="product">科研成果</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+                <a routerLink="sales">科创竞赛</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="society-manager">社会活动</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="democracy">民主评议</a>
+        </li>
+        <li nz-submenu nzOpen nzTitle="成绩管理" nzIcon="line-chart">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="staff-stats">总成绩</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+                <a routerLink="area-stats">升档管理</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="inform-student">通知公告</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="score-student">成绩查询</a>
+        </li>
+        <li nz-submenu nzOpen nzTitle="材料提交" nzIcon="line-chart">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="study">科研材料</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="competition">竞赛材料</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="society-student">活动材料</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="upgrade">升档材料</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+          </span>
+          <span class="header-logout" (click)="logout()">
+            <i nz-icon nzType="logout" nzTheme="outline" class="logout"></i>
+          </span>
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+-->
+
+<!--管理员-->
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a target="_blank">
+        <img src="../../assets/logo.svg" alt="logo">
+        <h1>奖学金评定管理系统</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="user-manage">用户管理</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="inform-manager">公告管理</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="excel-import">成绩录入</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="product">材料评审</a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="democracy">民主评议</a>
+      </li>
+      <li nz-submenu nzOpen nzTitle="成绩管理" nzIcon="line-chart">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="staff-stats">总成绩</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="area-stats">升档管理</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+          </span>
+        <span class="header-logout" (click)="logout()">
+            <i nz-icon nzType="logout" nzTheme="outline" class="logout"></i>
+          </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

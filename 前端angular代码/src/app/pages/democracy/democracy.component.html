@@ -1,0 +1,60 @@
+<form style="margin-bottom: 8px;" nz-form [nzLayout]="'inline'" [formGroup]="validateForm">
+  <!--
+  <nz-form-item>
+    <nz-form-label nzFor="name">
+      <span>姓名</span>
+    </nz-form-label>
+    <nz-form-control>
+      <input formControlName="name" nz-input placeholder="请输入姓名" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="area">
+      <span>战区</span>
+    </nz-form-label>
+    <nz-form-control>
+      <input formControlName="area" nz-input placeholder="请输入所属战区" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" (click)="submitForm()">查询</button>
+    </nz-form-control>
+  </nz-form-item>
+  -->
+  <nz-form-item>
+    <nz-upload [(nzFileList)]="fileList" [nzLimit]='1' [nzMultiple]="true" [nzBeforeUpload]="beforeUpload">
+      <button nz-button>
+        <i nz-icon nzType="upload"></i>
+        <span>上传评议成绩</span>
+      </button>
+    </nz-upload>
+  </nz-form-item>
+</form>
+<nz-table #basicTable [nzData]="listOfData" [nzShowPagination]="true"
+          [nzPageSize]="5"
+          [nzScroll]="{y:'350px'}">
+  <thead>
+  <tr>
+    <th>学号</th>
+    <th>姓名</th>
+    <th>班级</th>
+    <th>专业</th>
+    <th>民主评议成绩</th>
+    <th nzWidth="60px">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.student_number }}</td>
+    <td>{{ data.student_name }}</td>
+    <td>{{ data.class_name }}</td>
+    <td>{{ data.major}}</td>
+    <td>{{ data.democracy }}</td>
+    <td>
+      <a (click)="deleteDemocracy(data.id)">删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+

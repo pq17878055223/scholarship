@@ -1,0 +1,20 @@
+<form style="margin: 0 auto;" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-alert nzType="error" [nzMessage]="errorText" *ngIf="errorText" style="margin: 8px 0;"></nz-alert>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="请输入学工号!">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="userId" placeholder="学工号" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="请输入密码！">
+      <nz-input-group nzPrefixIcon="lock">
+        <input type="password" nz-input formControlName="password" placeholder="密码" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">登录</button>
+  <!--<a routerLink="/passport/register"> 注册 </a>-->
+</form>

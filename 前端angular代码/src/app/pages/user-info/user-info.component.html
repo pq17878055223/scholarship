@@ -1,0 +1,20 @@
+
+    <nz-descriptions nzTitle="我的信息" nzBordered nzSize="small">
+      <nz-descriptions-item nzTitle="员工照片" nzSpan="3">
+        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 128px" />
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="姓名" nzSpan="3">{{ user?.name }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="性别" nzSpan="3">{{ user?.sex }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="工号" nzSpan="3">{{ user?.userId }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="密码" nzSpan="3">{{ user?.password }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="职位" nzSpan="3">
+        {{ user?.position }}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="手机号码" nzSpan="3">
+        {{ user?.phoneNumber }}
+      </nz-descriptions-item>
+    </nz-descriptions>
+    <div nz-row style="padding-top: 8px;">
+      <button style="margin: 0 auto;" nz-button nzType="primary" (click)="edit()">修改我的信息</button>
+    </div>
+  
